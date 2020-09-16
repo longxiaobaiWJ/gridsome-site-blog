@@ -1,7 +1,6 @@
 <template>
   <div class="sidebar-view">
     <div class="el-card is-never-shadow">
-      <!---->
       <div class="el-card__body">
         <ul role="menubar" class="el-menu">
           <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">
@@ -10,42 +9,18 @@
               <span>最新动态</span>
             </g-link>
           </li>
-          <li
-            role="menuitem"
-            tabindex="-1"
-            class="el-menu-item is-active"
-            style="padding-left: 20px;"
-          >
-            <g-link to="/social-concact">
-              <i class="el-icon-mobile-phone"></i>
-              <span>社交圈</span>
-            </g-link>
-          </li>
-          <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">
-            <g-link to="/blog">
-              <i class="el-icon-edit-outline"></i>
-              <span>博客列表</span>
-            </g-link>
-          </li>
-          <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">
-            <g-link to="/project">
-              <i class="el-icon-service"></i>
-              <span>开源项目</span>
-            </g-link>
-          </li>
-          <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">
-            <g-link to="/helper">
-              <i class="el-icon-printer"></i>
-              <span>使用帮助</span>
-            </g-link>
-          </li>
-          <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">
-            <i class="el-icon-document"></i>
-            <span>README.md</span>
-          </li>
         </ul>
       </div>
     </div>
+    <!-- <el-card shadow="never">
+        <el-menu :default-active="active" @select="onSelect">
+            <el-menu-item v-for="item in constantRouterMap"
+                :key="item.path" :index="item.path">
+                <i :class="item.meta.icon"></i>
+                <span slot="title">{{item.meta.title}}</span>
+            </el-menu-item>
+        </el-menu>
+    </el-card> -->
     <div class="el-card is-never-shadow" style="margin-top: 20px; text-align: center;">
       <!---->
       <div class="el-card__body">
@@ -107,6 +82,42 @@
 
 <script>
 export default {
-	name: "Sidebar",
+  name: "Sidebar",
+  data () {
+    return {
+      visitRouters: [
+        {
+          path: '/',
+          name: '最新动态',
+          icon: 'el-icon-star-off'
+        },
+        {
+          path: '/social-concact',
+          name: '社交圈',
+          icon: 'el-icon-mobile-phone'
+        },
+        {
+          path: '/blog',
+          name: '博客列表',
+          icon: 'el-icon-edit-outline'
+        },
+        {
+          path: '/project',
+          name: '开源项目',
+          icon: 'el-icon-service'
+        },
+        {
+          path: '/helper',
+          name: '使用帮助',
+          icon: 'el-icon-printer'
+        },
+        {
+          path: '/read-me',
+          name: 'README.md',
+          icon: 'el-icon-document'
+        },
+      ]
+    }
+  }
 };
 </script>

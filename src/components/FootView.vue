@@ -5,10 +5,10 @@
         <div>
           © 2018 GitHub-Laziji&emsp;&emsp;
           <a
-            href="https://github.com/GitHub-Laziji"
+            href="https://github.com/longxiaobaiWJ"
             target="_blank"
           >Profile</a>&emsp;&emsp;
-          <a href="https://github.com/GitHub-Laziji/vblog" target="_blank">VBlog</a>
+          <a href="https://github.com/longxiaobaiWJ/gridsome-site-blog" target="_blank">GridsomeSiteBlog</a>
         </div>
       </el-col>
       <el-col :span="4">
