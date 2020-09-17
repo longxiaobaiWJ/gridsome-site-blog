@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar-view">
-    <div class="el-card is-never-shadow">
+    <!-- <div class="el-card is-never-shadow">
       <div class="el-card__body">
         <ul role="menubar" class="el-menu">
           <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">
@@ -11,16 +11,19 @@
           </li>
         </ul>
       </div>
-    </div>
-    <!-- <el-card shadow="never">
-        <el-menu :default-active="active" @select="onSelect">
-            <el-menu-item v-for="item in constantRouterMap"
+    </div> -->
+    <el-card shadow="never">
+      <!-- :default-active="active" @select="onSelect" -->
+        <el-menu >
+            <el-menu-item v-for="item in visitRouters"
                 :key="item.path" :index="item.path">
-                <i :class="item.meta.icon"></i>
-                <span slot="title">{{item.meta.title}}</span>
+               <g-link :to="item.path">
+                  <i :class="item.icon"></i>
+                  <span slot="title">{{item.title}}</span>
+               </g-link>
             </el-menu-item>
         </el-menu>
-    </el-card> -->
+    </el-card>
     <div class="el-card is-never-shadow" style="margin-top: 20px; text-align: center;">
       <!---->
       <div class="el-card__body">
@@ -88,32 +91,32 @@ export default {
       visitRouters: [
         {
           path: '/',
-          name: '最新动态',
+          title: '最新动态',
           icon: 'el-icon-star-off'
         },
         {
           path: '/social-concact',
-          name: '社交圈',
+          title: '社交圈',
           icon: 'el-icon-mobile-phone'
         },
         {
           path: '/blog',
-          name: '博客列表',
+          title: '博客列表',
           icon: 'el-icon-edit-outline'
         },
         {
           path: '/project',
-          name: '开源项目',
+          title: '开源项目',
           icon: 'el-icon-service'
         },
         {
           path: '/helper',
-          name: '使用帮助',
+          title: '使用帮助',
           icon: 'el-icon-printer'
         },
         {
           path: '/read-me',
-          name: 'README.md',
+          title: 'README.md',
           icon: 'el-icon-document'
         },
       ]
