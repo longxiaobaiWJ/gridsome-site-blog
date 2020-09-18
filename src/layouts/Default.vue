@@ -98,7 +98,7 @@ query {
           let temp = {};
           let left = this.randomInt(10, width - 310);
           if (left > width / 2 - 150) {
-            left += 300;
+            left += 230;
           }
           temp["left"] = left;
           temp["top"] = this.randomInt(20, 300);
