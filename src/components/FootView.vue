@@ -8,7 +8,10 @@
             href="https://github.com/longxiaobaiWJ"
             target="_blank"
           >Profile</a>&emsp;&emsp;
-          <a href="https://github.com/longxiaobaiWJ/gridsome-site-blog" target="_blank">GridsomeSiteBlog</a>
+          <a
+            href="https://github.com/longxiaobaiWJ/gridsome-site-blog"
+            target="_blank"
+          >GridsomeSiteBlog</a>
         </div>
       </el-col>
       <el-col :span="4">
@@ -28,7 +31,7 @@
 </template>
 
 <script>
-export default {
-	name: 'FootView'
-};
+  export default {
+    name: "FootView",
+  };
 </script>

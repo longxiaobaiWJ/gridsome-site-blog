@@ -52,12 +52,9 @@
               style="width: 100%;"
             ></el-slider>
           </el-col>
-          <el-col
-            :span="6"
-            style="padding: 9px 0px 0px 10px;color:#909399;font-size: 13px"
-          >
-          <!-- {{$util.formatTime(music.currentTime)}}/{{$util.formatTime(music.maxTime)}} -->
-          6/9
+          <el-col :span="6" style="padding: 9px 0px 0px 10px;color:#909399;font-size: 13px">
+            <!-- {{$util.formatTime(music.currentTime)}}/{{$util.formatTime(music.maxTime)}} -->
+            6/9
           </el-col>
         </el-row>
 
@@ -67,7 +64,7 @@
         <audio ref="music" loop v-else>
           <source :src="audioUrl" type="audio/mpeg" />
         </audio>
-			</el-col>
+      </el-col>
       <el-col :span="4" style="text-align: right;">
         <div style="font-size: 20px;color:#606266;margin-top: 5px">
           <b>{{githubUsername}}</b>
@@ -77,7 +74,7 @@
           &nbsp;{{location?location:'未填写地址'}}
           <br />
         </div>
-			</el-col>
+      </el-col>
       <el-col :span="2" style="text-align: center;">
         <img
           v-popover:bigAvatar
@@ -99,47 +96,44 @@
           <br />
           <img :src="avatarUrl" style="width: 200px;height: 200px;" />
         </el-popover>
-			</el-col>
+      </el-col>
     </el-row>
   </el-card>
 </template>
 
 <script>
-export default {
-  name: "CardView",
-  data () {
-    return {
-      topbar: {
-        active: "",
+  export default {
+    name: "CardView",
+    data() {
+      return {
+        topbar: {
+          active: "",
+        },
+        webSites: [],
+        music: {
+          isPlay: false,
+          currentTime: 0,
+          maxTime: 100,
+          volume: 100,
+        },
+        githubUsername: "longxiaobaiWJ",
+        name: "osa",
+        avatarUrl: "https://avatars0.githubusercontent.com/u/23134712?s=60&v=4",
+        audioAutoPlay: false,
+        audioUrl:
+          "https://m10.music.126.net/20200917000311/0ed1897037c512f547f84e79d96f7597/ymusic/0758/550f/545f/028d3b9421be8425d60dc57735cf6ebc.mp3",
+      };
+    },
+    props: ["location"],
+    methods: {
+      selectTopbar(index) {},
+      changeVolume() {},
+      playMusic() {
+        console.log("playMusic");
       },
-      webSites: [],
-      music: {
-        isPlay: false,
-        currentTime: 0,
-        maxTime: 100,
-        volume: 100
+      changeTime(time) {
+        this.$refs.music.currentTime = time;
       },
-      githubUsername: 'longxiaobaiWJ',
-      name: 'osa',
-      avatarUrl: 'https://avatars0.githubusercontent.com/u/23134712?s=60&v=4',
-      audioAutoPlay: false,
-      audioUrl: 'https://m10.music.126.net/20200917000311/0ed1897037c512f547f84e79d96f7597/ymusic/0758/550f/545f/028d3b9421be8425d60dc57735cf6ebc.mp3'
-    }
-  },
-  props: ['location',],
-  methods: {
-    selectTopbar(index) {
-
     },
-    changeVolume () {
-
-    },
-    playMusic () {
-      console.log('playMusic');
-    },
-    changeTime(time) {
-      this.$refs.music.currentTime = time
-    },
-  }
-};
+  };
 </script>

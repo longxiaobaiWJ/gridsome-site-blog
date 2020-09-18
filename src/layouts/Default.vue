@@ -54,63 +54,63 @@ query {
 </static-query>
 
 <script>
-import FootView from "@/components/FootView.vue";
-import CardView from "@/components/CardView.vue";
-import Sidebar from "@/components/Sidebar.vue";
+  import FootView from "@/components/FootView.vue";
+  import CardView from "@/components/CardView.vue";
+  import Sidebar from "@/components/Sidebar.vue";
 
-export default {
-  data() {
-    return {
-      music: {
-        isPlay: false,
-        currentTime: 0,
-        maxTime: 0,
-        volume: 100,
-      },
-      fullButton: {
-        full: false,
-      },
-      topbar: {
-        active: "",
-      },
-      randomIcon: [],
-    };
-  },
-  components: {
-    FootView,
-    CardView,
-    Sidebar
-  },
-  methods: {
-    full() {},
-    randomInt(s, e) {
-      let d = e - s;
-      if (d < 0) {
-        return s;
-      }
-      let r = Math.random() * d + s;
-      r = parseInt(r, 10);
-      return r;
+  export default {
+    data() {
+      return {
+        music: {
+          isPlay: false,
+          currentTime: 0,
+          maxTime: 0,
+          volume: 100,
+        },
+        fullButton: {
+          full: false,
+        },
+        topbar: {
+          active: "",
+        },
+        randomIcon: [],
+      };
     },
-    siteCreate() {
-      let width = window.innerWidth;
-      for (let i = 0; i < 12; i++) {
-        let temp = {};
-        let left = this.randomInt(10, width - 310);
-        if (left > width / 2 - 150) {
-          left += 300;
+    components: {
+      FootView,
+      CardView,
+      Sidebar,
+    },
+    methods: {
+      full() {},
+      randomInt(s, e) {
+        let d = e - s;
+        if (d < 0) {
+          return s;
         }
-        temp["left"] = left;
-        temp["top"] = this.randomInt(20, 300);
-        temp["size"] = this.randomInt(20, 40);
-        this.randomIcon.push(temp);
-      }
+        let r = Math.random() * d + s;
+        r = parseInt(r, 10);
+        return r;
+      },
+      siteCreate() {
+        let width = window.innerWidth;
+        for (let i = 0; i < 12; i++) {
+          let temp = {};
+          let left = this.randomInt(10, width - 310);
+          if (left > width / 2 - 150) {
+            left += 300;
+          }
+          temp["left"] = left;
+          temp["top"] = this.randomInt(20, 300);
+          temp["size"] = this.randomInt(20, 40);
+          this.randomIcon.push(temp);
+        }
+      },
     },
-  },
-  mounted() {
-    this.siteCreate();
-  },
-};
+    mounted() {
+      this.siteCreate();
+    },
+  };
 </script>
 
 <style>
@@ -122,6 +122,15 @@ body {
   line-height: 1.5;
 }
 
-.layout {
+.empty-style {
+  min-height: 300px;
+  margin-bottom: 20px;
+  padding: 20px 0px 20px 0px;
+  text-align: center;
+}
+
+.href-style {
+  text-decoration: none;
+  cursor: pointer;
 }
 </style>
