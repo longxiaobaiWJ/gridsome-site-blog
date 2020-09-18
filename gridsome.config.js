@@ -8,5 +8,6 @@
 
 module.exports = {
   siteName: 'Gridsome',
+  siteDescription: '龙小白的博客',
   plugins: []
 }

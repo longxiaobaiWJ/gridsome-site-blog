@@ -1,22 +1,9 @@
 <template>
   <div class="sidebar-view">
-    <!-- <div class="el-card is-never-shadow">
-      <div class="el-card__body">
-        <ul role="menubar" class="el-menu">
-          <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">
-            <g-link to="/">
-              <i class="el-icon-star-off"></i>
-              <span>最新动态</span>
-            </g-link>
-          </li>
-        </ul>
-      </div>
-    </div>-->
     <el-card shadow="never">
-      <!-- :default-active="active" @select="onSelect" -->
-      <el-menu>
-        <el-menu-item v-for="item in visitRouters" :key="item.path" :index="item.path">
-          <g-link :to="item.path">
+      <el-menu :default-active="active">
+        <el-menu-item v-for="item in visitRouters" :key="item.path" :index="item.path" >
+          <g-link class="route-class" :to="item.path" tag="span" exact active-class="route-active">
             <i :class="item.icon"></i>
             <span slot="title">{{item.title}}</span>
           </g-link>
@@ -76,9 +63,9 @@
             icon: "el-icon-document",
           },
         ],
+        active: '',
         token: "",
-        description:
-          "在 github-> settings-> developerSettings-> personalAccessTokens 勾选gist权限,获取Token. 详情参考README.md",
+        description: `在 github-> settings-> developerSettings-> personalAccessTokens 勾选gist权限,获取Token. 详情参考README.md`,
       };
     },
     methods: {
@@ -87,3 +74,14 @@
     },
   };
 </script>
+
+<style scoped>
+.route-class{
+  display: inline-block;
+  width: 100%;
+}
+
+.route-active {
+  color: #409eff;
+}
+</style>

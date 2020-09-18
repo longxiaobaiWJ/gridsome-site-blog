@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "element-ui": "^2.13.2",
-    "gridsome": "^0.7.0"
+    "gridsome": "^0.7.0",
+    "markdown-it": "^11.0.1"
   }
 }
