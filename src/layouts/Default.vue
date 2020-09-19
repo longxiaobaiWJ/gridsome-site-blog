@@ -20,8 +20,8 @@
           </font>
         </div>
       </div>
-      <h1 class="project-name">Laziji</h1>
-      <h2 class="project-tagline">欢迎来到辣子鸡的个人博客。</h2>
+      <h1 class="project-name">longxiaobaiWJ</h1>
+      <h2 class="project-tagline">欢迎来到龙小白的个人博客。</h2>
       <a href="https://github.com/longxiaobaiWJ" target="_blank" class="btn">GitHub主页</a>
       <a href="https://github.com/longxiaobaiWJ/gridsome-site-blog" target="_blank" class="btn">博客源码</a>
     </section>
