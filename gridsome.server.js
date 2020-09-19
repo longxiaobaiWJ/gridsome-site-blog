@@ -5,10 +5,42 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
+const dataWrapper = require('./data.load.js')
+
+const blogCallback = (item) => {
+  const { id, description, url, files, updated_at } = item;
+  const title = Object.keys(files).shift();
+  return { id, description, url, updated_at, title }
+}
+
+const dataCompose = (name, addCollection, edges ) =>{
+  const collection = addCollection(name)
+    for (const item of edges) {
+      collection.addNode(item)
+    }
+}
+
 module.exports = function (api) {
-  api.loadSource(({ addCollection }) => {
-    // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
+  api.loadSource(async ({ addCollection }) => {
+    const data = await dataWrapper('/users/longxiaobaiWJ/gists', blogCallback)
+    dataCompose('Blog', addCollection, data)
   })
+
+  api.loadSource(async ({ addCollection }) => {
+    const data = await dataWrapper('/users/longxiaobaiWJ/following')
+    dataCompose('Following', addCollection, data)
+  })
+
+  api.loadSource(async ({ addCollection }) => {
+    const data = await dataWrapper('/users/longxiaobaiWJ/followers')
+    dataCompose('Followers', addCollection, data)
+  })
+  
+  api.loadSource(async ({ addCollection }) => {
+    const data = await dataWrapper('/users/longxiaobaiWJ/repos')
+    dataCompose('Repos', addCollection, data)
+  })
+
 
   api.createPages(({ createPage }) => {
     // Use the Pages API here: https://gridsome.org/docs/pages-api/

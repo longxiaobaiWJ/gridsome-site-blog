@@ -15,12 +15,11 @@
             @click="blogCreate"
           >写博文</el-button>
         </el-card>
-
-        <div v-if="blogs.length > 0">
+        <div v-if="$page.allBlog && $page.allBlog.edges.length > 0">
           <el-card
             shadow="hover"
-            v-for="(item) in blogs"
-            :key="item.id"
+            v-for="(edge) in $page.allBlog.edges"
+            :key="edge.node.id"
             style="margin-bottom: 20px"
           >
             <div slot="header">
@@ -29,22 +28,15 @@
                   <span>
                     <a class="href-style">
                       <i class="el-icon-edit-outline"></i>
-                      &nbsp;&nbsp; {{item.title}}
+                      &nbsp;&nbsp; {{edge.node.title}}
                     </a>
                   </span>
                 </el-col>
                 <el-col :span="8">
                   <div style="text-align: right;">
                     <el-button style="padding: 3px 0" type="text" icon="el-icon-share"></el-button>
+                    <el-button style="padding: 3px 0" type="text" icon="el-icon-edit" v-if="token"></el-button>
                     <el-button
-                      @click="editBlog(index)"
-                      style="padding: 3px 0"
-                      type="text"
-                      icon="el-icon-edit"
-                      v-if="token"
-                    ></el-button>
-                    <el-button
-                      @click="deleteBlog(index)"
                       style="padding: 3px 0"
                       type="text"
                       icon="el-icon-delete"
@@ -54,9 +46,18 @@
                 </el-col>
               </el-row>
             </div>
-            <div style="updtate-style">最近更新 {{item.updateTime}}</div>
-            <div class="description-style">{{item.description}}</div>
+            <div style="updtate-style">最近更新 {{edge.node.updated_at}}</div>
+            <div class="description-style">{{edge.node.description}}</div>
           </el-card>
+          <div style="text-align: center">
+            <el-pagination
+             @current-change="onChangePages"
+              layout="prev, pager, next"
+              :current-page.sync="$page.allBlog.pageInfo.currentPage"
+              :page-size="5"
+              :total="$page.allBlog.pageInfo.totalPages * 5"
+            ></el-pagination>
+          </div>
         </div>
         <el-card shadow="never" class="empty-style" v-else>
           <font style="font-size: 30px;color:#dddddd;">
@@ -68,29 +69,53 @@
   </Layout>
 </template>
 
+<page-query>
+query ($page: Int) {
+  allBlog (perPage: 5, page: $page) @paginate {
+    pageInfo {
+      totalPages
+      currentPage
+    }
+    edges {
+      node {
+        id,
+        description,
+        url,
+        title
+      }
+    }
+  }
+}
+</page-query>
+
 <script>
-  export default {
-    name: "BlogPage",
-    metaInfo: {
-      title: "About us",
+export default {
+  name: "BlogPage",
+  metaInfo: {
+    title: "About us",
+  },
+  data() {
+    return {
+      query: {
+        page: 1,
+        pageSize: 5,
+        pageNumber: 1,
+      },
+      loading: false,
+      searchKey: "",
+      blogs: [],
+    };
+  },
+  methods: {
+    blogCreate() {},
+    search() {},
+    onChangePages(page) {
+      let path = `/blog`;
+      if(page !== 1) path =`${path}/${page}` ;
+      this.$router.push({ path: path });
     },
-    data() {
-      return {
-        query: {
-          page: 1,
-          pageSize: 5,
-          pageNumber: 1,
-        },
-        loading: false,
-        searchKey: "",
-        blogs: [],
-      };
-    },
-    methods: {
-      blogCreate() {},
-      search() {},
-    },
-  };
+  },
+};
 </script>
 
 <style scoped>

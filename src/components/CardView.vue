@@ -121,7 +121,7 @@
         avatarUrl: "https://avatars0.githubusercontent.com/u/23134712?s=60&v=4",
         audioAutoPlay: false,
         audioUrl:
-          "https://m10.music.126.net/20200917000311/0ed1897037c512f547f84e79d96f7597/ymusic/0758/550f/545f/028d3b9421be8425d60dc57735cf6ebc.mp3",
+          "http://isure.stream.qqmusic.qq.com/C400001ODyxs3Prd18.m4a?guid=3986616393&vkey=34587C2A65309DAD676369AFA71257EB358CF659BFE910D58746C51F869BE354436D32DA9E465C9F5B6AF5DC8C85EAC4AC13A4EC3C752557&uin=0&fromtag=66",
       };
     },
     props: ["location"],

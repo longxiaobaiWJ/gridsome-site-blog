@@ -3,7 +3,7 @@
     <el-card shadow="never">
       <el-menu :default-active="active">
         <el-menu-item v-for="item in visitRouters" :key="item.path" :index="item.path" >
-          <g-link class="route-class" :to="item.path" tag="span" exact active-class="route-active">
+          <g-link class="route-class" :to="item.path" tag="span" :exact="dataSolve(item.path)" active-class="route-active">
             <i :class="item.icon"></i>
             <span slot="title">{{item.title}}</span>
           </g-link>
@@ -71,6 +71,9 @@
     methods: {
       openTokenDialog() {},
       cancellation() {},
+      dataSolve(path) {
+        return '/' === path
+      }
     },
   };
 </script>
